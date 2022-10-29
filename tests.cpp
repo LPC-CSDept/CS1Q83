@@ -62,7 +62,7 @@ char check(string txt)
 	return txt[minidx];
 }
 
-TEST_CASE("Ex2 lestused() ", "[example]")
+TEST_CASE("Ex2 leastused() ", "[example]")
 {
 	string str;
 	char ret, checkval;
