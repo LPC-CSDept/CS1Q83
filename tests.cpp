@@ -38,28 +38,33 @@ TEST_CASE("Ex1 leastused() ", "[example]")
 char check(string txt)
 {
 	int seen[26] = {0};
-	int idx, mincnt, minidx;
+	int cnt, i, idx, mincnt, minidx;
+	char alpha;
 
-	for (int i = 0; i < txt.size(); i++)
+	alpha = 'A';
+	for (i = 0; i < 26; i++)
 	{
-		idx = txt[i] - 'A';
-		seen[idx] += 1;
+		cnt = count(txt.begin(), txt.end(), alpha);
+		alpha += 1;
+		seen[i] = cnt;
 	}
 	// for (int i = 0; i < 26; i++)
 	// {
 	// 	cout << seen[i] << "\t";
 	// }
-	cout << endl;
-	for (int i = 0; i < txt.size(); i++)
+	// cout << endl;
+	for (i = 0; i < 26; i++)
 	{
-		idx = txt[i] - 'A';
-		if ((i == 0) or (mincnt > seen[idx]))
+		if (seen[i] == 0)
+			continue;
+		if ((i == 0) or (mincnt > seen[i]))
 		{
-			mincnt = seen[idx];
+			mincnt = seen[i];
 			minidx = i;
 		}
 	}
-	return txt[minidx];
+	alpha = 'A' + minidx;
+	return alpha;
 }
 
 TEST_CASE("Ex2 leastused() ", "[example]")
@@ -68,6 +73,7 @@ TEST_CASE("Ex2 leastused() ", "[example]")
 	char ret, checkval;
 
 	makestring(str);
+	// str = "AAABBBC";
 	ret = leastused(str);
 	cout << "test email string is " << str << "\tYour return value is: " << ret << endl;
 	checkval = check(str);
