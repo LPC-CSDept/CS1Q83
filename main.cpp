@@ -1,19 +1,12 @@
-// Condition for the email string.
-// start with the alphabet.
-// ID characters are all alpha numerics characters
-// the last string shoud be one of the list {com, edu, org, and net}
-
 #include "main.hpp"
-
 int main()
 {
-	string email;
+	// string txt = "AAAAABBBBDDDDEEZ";
+	string txt;
+	char letter;
 
-	cout << "Enter your email \n";
-	cin >> email;
-
-	if (emailcheck(email))
-		cout << "Your email passed the validation\n";
-	else
-		cout << "Your email has an invalid format\n";
+	makestring(txt);
+	cout << txt << endl;
+	letter = leastused(txt);
+	cout << letter << endl;
 }

@@ -5,54 +5,74 @@
 #include "main.hpp"
 // tests for exercise 1
 
-TEST_CASE("Ex1 emailcheck() ", "[example]")
+TEST_CASE("Ex1 leastused() ", "[example]")
 {
-	int ret;
-	string email;
+	char ret;
+	string str;
 
-	email = "ABCDEF@company.com";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+	str = "AAAAABBBBDDDDEEZ";
+	ret = leastused(str);
+	cout << "test string is " << str << "\tYour return value is: " << ret << endl;
 
-	INFO("The result should  1\n");
-	REQUIRE(ret == 1);
+	INFO("The result should  Z\n");
+	REQUIRE(ret == 'Z');
 	cout << "--------------------------------------------------\n";
 
-	email = "ABC@company.com";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+	str = "AAABBBC";
+	ret = leastused(str);
+	cout << "test string is " << str << "\tYour return value is: " << ret << endl;
 
-	INFO("The result should  0\n");
-	REQUIRE(ret == 0);
+	INFO("The result should  C\n");
+	REQUIRE(ret == 'C');
 	cout << "--------------------------------------------------\n";
 
-	email = "johnsmith@company.io.edu";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+	str = "CAAA";
+	ret = leastused(str);
+	cout << "test string is " << str << "\tYour return value is: " << ret << endl;
 
-	INFO("The result should  1\n");
-	REQUIRE(ret == 1);
+	INFO("The result should  C\n");
+	REQUIRE(ret == 'C');
 	cout << "--------------------------------------------------\n";
 }
 
-TEST_CASE("Ex2 emailcheck() ", "[example]")
+char check(string txt)
 {
-	int ret;
-	string email;
+	int seen[26] = {0};
+	int idx, mincnt, minidx;
 
-	email = "john@company.server.io";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+	for (int i = 0; i < txt.size(); i++)
+	{
+		idx = txt[i] - 'A';
+		seen[idx] += 1;
+	}
+	// for (int i = 0; i < 26; i++)
+	// {
+	// 	cout << seen[i] << "\t";
+	// }
+	cout << endl;
+	for (int i = 0; i < txt.size(); i++)
+	{
+		idx = txt[i] - 'A';
+		if ((i == 0) or (mincnt > seen[idx]))
+		{
+			mincnt = seen[idx];
+			minidx = i;
+		}
+	}
+	return txt[minidx];
+}
 
-	INFO("The result should  0\n");
-	REQUIRE(ret == 0);
-	cout << "--------------------------------------------------\n";
+TEST_CASE("Ex2 lestused() ", "[example]")
+{
+	string str;
+	char ret, checkval;
 
-	email = "john@company.server";
-	ret = emailcheck(email);
-	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+	makestring(str);
+	ret = leastused(str);
+	cout << "test email string is " << str << "\tYour return value is: " << ret << endl;
+	checkval = check(str);
 
-	INFO("The result should  0\n");
-	REQUIRE(ret == 0);
+	INFO("The result should be " << checkval);
+	REQUIRE(ret == checkval);
 	cout << "--------------------------------------------------\n";
 }

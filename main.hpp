@@ -1,23 +1,27 @@
-// Condition for the email string.
-// start with the alphabet.
-// ID characters are all alpha numerics characters
-// the last string shoud be one of the list {com, edu, org, and net}
-
 #include <iostream>
-#include <cctype>
 #include <string>
+#include <ctime>
+#include <cstdlib>
+
 using namespace std;
 
-int emailcheck(string);
+void makestring(string &);
+char leastused(string);
 
-int emailcheck(string email)
+void makestring(string &txt)
 {
-	int flag;
-	flag = 1;
+	int idx;
+	srand(time(0));
 
+	for (int i = 0; i < 100; i++)
+	{
+		idx = rand() % 26 + 'A';
+		txt.push_back(idx);
+	}
+}
+char leastused(string txt)
+{
 	//**************************************************
 	// Make your code
 	//**************************************************
-
-	return flag;
 }

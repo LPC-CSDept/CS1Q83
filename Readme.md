@@ -5,7 +5,7 @@
 
 ---
 
-### Quiz 8: Question 2
+### Quiz 8: Question 3
 
 ### Edit the "main.hpp"
 
