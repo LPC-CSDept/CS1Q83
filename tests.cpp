@@ -75,7 +75,7 @@ TEST_CASE("Ex2 leastused() ", "[example]")
 	makestring(str);
 	// str = "AAABBBC";
 	ret = leastused(str);
-	cout << "test email string is " << str << "\tYour return value is: " << ret << endl;
+	cout << "test string is " << str << "\tYour return value is: " << ret << endl;
 	checkval = check(str);
 
 	INFO("The result should be " << checkval);
