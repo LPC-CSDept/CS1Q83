@@ -53,17 +53,26 @@ char check(string txt)
 	// 	cout << seen[i] << "\t";
 	// }
 	// cout << endl;
-	for (i = 0; i < 26; i++)
+// 	for (i = 0; i < 26; i++)
+// 	{
+// 		if (seen[i] == 0)
+// 			continue;
+// 		if ((i == 0) or (mincnt > seen[i]))
+// 		{
+// 			mincnt = seen[i];
+// 			minidx = i;
+// 		}
+// 	}
+// 	alpha = 'A' + minidx;
+	for (i = 0; i < txt.size(); i++)
 	{
-		if (seen[i] == 0)
-			continue;
-		if ((i == 0) or (mincnt > seen[i]))
+		if ((i == 0) or (mincnt > seen[txt[i] - 'A']))
 		{
-			mincnt = seen[i];
+			mincnt = seen[txt[i] - 'A'];
 			minidx = i;
 		}
 	}
-	alpha = 'A' + minidx;
+	alpha = txt[minidx];
 	return alpha;
 }
 
